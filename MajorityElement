@@ -1,0 +1,25 @@
+//assuming that we will have a majority element in the array(whose count is more than floor(n/2)
+
+public int majorityElement(int[] nums) {
+        
+        Map<Integer,Integer> Mymap = new HashMap<Integer,Integer>();
+        int c=0;
+        for (int i = 0; i < nums.length; i++) {
+             c = nums[i];
+        
+            if (Mymap.containsKey(c)) 
+            {
+                int cnt = Mymap.get(c);
+                if(cnt==nums.length/2)          //as soon as find count of a number = n/2 , just return it
+                    return c;
+                Mymap.put(c, ++cnt);
+            } 
+            else 
+            {
+                Mymap.put(c, 1);
+                if(nums.length==1)          //if only single element, return that only
+                    return c;
+            }
+    }
+        return c;           //will never reach here
+    }
